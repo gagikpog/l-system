@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L system</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js"></script>
+    <script src="base.js"></script>
+</head>
+<body>
+    <canvas
+        id="canvas"
+        onmousewheel="mouseWheel(event)"
+        onmousedown="mouseDown(event)"
+        onmousemove ="mouseMove(event)"
+        onmouseout ="mouseUp(event)"
+        onmouseup ="mouseUp(event)"
+        ></canvas>
+    <div class="menu">
+        <div class="row">
+            <label>переменные</label>
+            <input id="vars" type="text" oninput="updateDynamic()" value="X F">
+        </div>
+        <div class="row">
+            <label>константы</label>
+            <input id="constants" type="text" oninput="updateDynamic()" value="+ - [ ]">
+        </div>
+        <div class="row">
+            <label>старт</label>
+            <input id="start" type="text" value="X">
+        </div>
+        <div class="row">
+            <label>правила</label>
+            <input id="mutation" type="text" value="(X : F-[[X]+X]+F[+FX]-X), (F : FF)">
+        </div>
+        <div class="row">
+            <label>угол</label>
+            <input id="angle" type="text" value="90">
+        </div>
+
+        <div class="dynamic">
+            <div class="label-wrapper"><label>X</label></div>
+            <textarea name="X"></textarea>
+            <br>
+
+            <div class="label-wrapper"><label>F</label></div>
+            <textarea name="F">step</textarea>
+            <br>
+
+            <div class="label-wrapper"><label>-</label></div>
+            <textarea name="-" textarea>left 20</textarea>
+            <br>
+
+            <div class="label-wrapper"><label>+</label></div>
+            <textarea name="+">right 20</textarea>
+            <br>
+
+            <div class="label-wrapper"><label>[</label></div>
+            <textarea name="[">stash</textarea>
+            <br>
+
+            <div class="label-wrapper"><label>]</label></div>
+            <textarea name="]">pop</textarea>
+            <br>
+        </div>
+
+        <div class="row">
+            <input onclick="draw()" type="button" value="Update">
+            <input onclick="next()" type="button" value="Next">
+        </div>
+
+    </div>
+</body>
+</html>

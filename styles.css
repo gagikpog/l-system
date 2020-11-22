@@ -1,0 +1,25 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+html, body {
+    height: 100%;
+}
+
+#canvas {
+    height: 100%;
+    width: 100%;
+}
+
+.menu {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 200px;
+    background-color: #00000033;
+}
+
+.label-wrapper {
+    display: inline-block;
+    min-width: 50px;
+}
