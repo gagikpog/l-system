@@ -140,7 +140,7 @@ function doAction (action) {
         }
     }
 
-    actions = actions.map((a) => a.replace(/\s/g, ''));
+    actions = actions.filter(Boolean).map((a) => a.replace(/\s/g, ''));
 
     return (turtle) => {
         actions.forEach((a) => {
@@ -149,15 +149,15 @@ function doAction (action) {
                     commands[a](turtle);
                 } else {
                     if (/^(left|right)/.test(a)) {
-                        commands[a.replace(/\d/g, '')](turtle, a.replace(/^(left|right)/, ''));
+                        commands[a.replace(/\d|\./g, '')](turtle, a.replace(/^(left|right)/, ''));
                     } else {
-                        // console.log(`Command "${a}" not find`);
+                        throw new Error(`Command "${a}" not find`);
                     }
                 }
             } catch (error) {
                 console.log(error.message);
             }
-        })
+        });
     }
 }
 
