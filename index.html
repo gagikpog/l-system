@@ -18,24 +18,27 @@
         onmouseup ="mouseUp(event)"
         ></canvas>
     <div class="menu">
+        <div class="row spoiler">
+           <button onclick="spoiler(event)"> << </button>
+        </div>
         <div class="row">
-            <label>переменные</label>
+            <label>Переменные</label>
             <input id="vars" type="text" oninput="updateDynamic()" value="X F">
         </div>
         <div class="row">
-            <label>константы</label>
+            <label>Константы</label>
             <input id="constants" type="text" oninput="updateDynamic()" value="+ - [ ]">
         </div>
         <div class="row">
-            <label>старт</label>
+            <label>Старт</label>
             <input id="start" type="text" value="X">
         </div>
         <div class="row">
-            <label>правила</label>
+            <label>Правила</label>
             <input id="mutation" type="text" value="(X : F-[[X]+X]+F[+FX]-X), (F : FF)">
         </div>
         <div class="row">
-            <label>угол</label>
+            <label>Угол</label>
             <input id="angle" type="text" value="90">
         </div>
 
@@ -66,8 +69,8 @@
         </div>
 
         <div class="row">
-            <input onclick="draw()" type="button" value="Update">
-            <input onclick="next()" type="button" value="Next">
+            <button onclick="draw()"> Обновить </button>
+            <button onclick="next()"> Шаг </button>
         </div>
 
     </div>

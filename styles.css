@@ -4,11 +4,13 @@
 }
 html, body {
     height: 100%;
+    color: #fff;
 }
 
 #canvas {
     height: 100%;
     width: 100%;
+    background-color: #332f2f;
 }
 
 .menu {
@@ -16,10 +18,36 @@ html, body {
     left: 0;
     top: 0;
     width: 200px;
-    background-color: #00000033;
+    background-color: #ffffff33;
+    padding: 10px;
 }
 
 .label-wrapper {
     display: inline-block;
     min-width: 50px;
+}
+
+input, textarea {
+    color: #fff;
+    background-color: #443e3e;
+    width: 100%;
+    caret-color: #fff;
+}
+
+button {
+    color: #fff;
+    background-color: #443e3e;
+    padding: 10px;
+}
+
+.closed > * {
+    display: none;
+}
+
+.closed .spoiler {
+    display: block;
+}
+
+.closed.menu {
+    width: min-content;
 }

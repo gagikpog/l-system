@@ -23,14 +23,17 @@ class LSystemBase {
         this.height = window.innerHeight;
         this.width = window.innerWidth;
 
-        this.initConfig = {...config};
+        this.initConfig = {...config, selfBuffer: true};
     }
 
     _write() {
         this.turtle = new Turtle(this.initConfig);
+        this.ctx.beginPath();
         for (let i = 0; i < this.str.length; i++) {
             this.regulations[this.str[i]].action(this.turtle);
         }
+        this.ctx.closePath();
+        this.ctx.stroke();
     }
 
     _generate(arr) {
@@ -65,7 +68,7 @@ class Turtle {
     constructor(config) {
         this.pos = config.startPos || new Dir(0, 0, toRadian(90));
         this.ctx = config.ctx;
-        // this.lineLength  = config.lineLength || 10;
+        this.selfBuffer = config.selfBuffer || false;
 
         this.height = window.innerHeight;
         this.width = window.innerWidth;
@@ -101,11 +104,15 @@ class Turtle {
     }
 
     _drawLine(p1, p2) {
-        this.ctx.beginPath();
+        if (!this.selfBuffer) {
+            this.ctx.beginPath();
+        }
         this.ctx.moveTo(p1.x + offset.x, this.height - p1.y + offset.y);
         this.ctx.lineTo(p2.x + offset.x, this.height - p2.y + offset.y);
-        this.ctx.closePath();
-        this.ctx.stroke();
+        if (!this.selfBuffer) {
+            this.ctx.closePath();
+            this.ctx.stroke();
+        }
     }
 }
 

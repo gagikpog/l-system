@@ -1,12 +1,19 @@
 let game = null;
 
+const defaultAcrions = {
+    '+' : 'right 90',
+    '-' : 'left 90',
+    '[' : 'stash',
+    ']' : 'pop'
+};
+
 document.addEventListener("DOMContentLoaded", () => {
     const canvas = document.querySelector('#canvas');
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
     ctx = canvas.getContext('2d');
+    ctx.strokeStyle = '#ffffff';
 });
-
 
 function draw() {
     const vars = document.querySelector('#vars').value;
@@ -67,6 +74,7 @@ function updateDynamic() {
 
         const textarea = document.createElement('textarea');
         textarea.name = name;
+        textarea.value = defaultAcrions[name] || 'step';
 
         const br = document.createElement('br');
 
@@ -123,4 +131,16 @@ function mouseMove(event) {
 
 function mouseUp(event) {
     mousePos = null;
+}
+
+function spoiler(event) {
+    this.expand = !this.expand;
+    const menu = document.querySelector('.menu');
+    event.target.textContent = this.expand ? '>>' : '<<';
+    
+    if (this.expand) {
+        menu.classList.add('closed');
+    } else {
+        menu.classList.remove('closed');
+    }
 }
