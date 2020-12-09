@@ -177,14 +177,14 @@ class Regulations {
         this.start = config.start;
 
         vars.replace(/\s/g, '').split('').forEach((_var) => {
-            const action = actions.children[_var].value;
+            const action = actions.children['node-' + _var].value;
             this[_var] = {
                 action: doAction(action)
             };
         });
 
         constants.replace(/\s/g, '').split('').forEach((_const) => {
-            const action = actions.children[_const].value;
+            const action = actions.children['node-' + _const].value;
             this[_const] = {
                 mutation: _const,
                 action: doAction(action)

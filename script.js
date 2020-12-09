@@ -73,7 +73,7 @@ function updateDynamic() {
         label.innerText = name;
 
         const textarea = document.createElement('textarea');
-        textarea.name = name;
+        textarea.name = 'node-' + name;
         textarea.value = defaultAcrions[name] || 'step';
 
         const br = document.createElement('br');
